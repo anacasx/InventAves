@@ -6,6 +6,8 @@ use Classes\Email;
 use Model\Costos;
 use Model\Agregar;
 use MVC\Router;
+use Model\Ventas;
+
 
 class LoginController
 {
@@ -26,10 +28,34 @@ class LoginController
     {
         $router->render('inven/existencias');
     }
-    public static function ventas(Router $router)
-    {
-        $router->render('inven/ventas');
-    }
+    public static function ventas(Router $router) {
+        //echo "desde costos";
+            // Alertas vacias
+            $alertas = [];
+            $ventas = new Ventas();
+        
+            if($_SERVER['REQUEST_METHOD'] === 'POST') {
+               $alertas = $ventas->validarNuevaCuenta();
+                $ventas->sincronizar($_POST);
+        
+                if(empty($alertas)) {
+                    echo "alertas vacías";
+                }else {
+            $resultado = $ventas->guardar();
+            
+            
+            if($resultado) {
+              //  debuguear($usuario);
+           
+              echo "<script>alert('Datos guardados correctamente');</script>";
+                 
+                // header('Location: /mensaje');
+               }}}
+               $router->render('inven/ventas', [
+                'ventas' => $ventas,
+                'alertas' => $alertas
+            ]);
+        }        
     public static function costos(Router $router)
     {
         // Alertas vacias
