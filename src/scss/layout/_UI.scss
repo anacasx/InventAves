@@ -1,68 +1,90 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.contenedor-app{
-@include m.tablet{
-    //display: grid;
-    //grid-template-columns: repeat(2,1fr);
-    min-height: 100vh;
+/* Estilos para el menú de navegación */
+.menu {
+    background-color: #C5371B; /* Color de fondo */
+    padding: 20px;
+    width: 200px;
+    max-height: 100vh; /* Altura máxima igual a la altura de la pantalla */
+    overflow-y: auto; /* Desplazamiento vertical si el contenido excede el tamaño */
+    color: #ffffff; /* Color del texto */
+    position: fixed;
+    top: 0;
+    left: 0;
 
-    width: 95%;
-    margin: 2rem auto;
-    padding: 3rem;
+    a {
+        display: block;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 30px 20px; /* Espaciado interno */
+        transition: background-color 0.3s ease; /* Transición suave de color de fondo */
 
-    /* Estilos para resaltar y dar sombra al contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    background-color: v.$back-logo; /* Fondo blanco */
-}
-.imagen {
-    height: 20rem;
-    
-    background-image: url(../img/img1.jpg);
-    background-size: cover;
-    background-position: center center;
-    @include m.tablet {
-        height: auto;
+        &:hover {
+            background-color: #C5371B; /* Color de fondo al pasar el ratón */
+        }
     }
 }
 
-.app {
-    width: 95%;
-    margin: 0 auto;
-    padding: 3rem 0;
+.contenedor-app {
     @include m.tablet {
-        overflow: scroll;
+        min-height: 100vh;
+        width: calc(100% - 410px); /* Ajuste para dejar espacio al menú */
+        margin: 2rem auto;
+        padding: 3rem;
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        background-color: v.$back-logo; /* Fondo blanco */
     }
-}
+
+    .imagen {
+        height: 20rem;
+        background-image: url(../img/img1.jpg);
+        background-size: cover;
+        background-position: center center;
+
+        @include m.tablet {
+            height: auto;
+        }
+    }
+
+    .app {
+        width: 95%;
+        margin: 0 auto;
+        padding: 3rem 0;
+
+        @include m.tablet {
+            overflow: scroll;
+        }
+    }
 }
 
 .barra {
-margin: v.$separacion 0;
+    margin: v.$separacion 0;
 
-@include m.tablet {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-}
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
 
-.boton {
-    @include m.boton(v.$negro, v.$rojo-logo);
-    margin: 0;
-}
+    .boton {
+        @include m.boton(v.$negro, v.$rojo-logo);
+        margin: 0;
+    }
 }
 
 .barra-servicios {
-margin-bottom: v.$separacion;
+    margin-bottom: v.$separacion;
 
-@include m.tablet {
-    display: flex;
-    justify-content: space-between;
-}
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.boton {
-    margin: 0 0 1rem 0;
-}
+    .boton {
+        margin: 0 0 1rem 0;
+    }
 }
 
 table {
@@ -77,10 +99,12 @@ th, td {
     padding: 13px;
     text-align: left;
 }
+
 th {
     background-color: v.$rojo-logo;
     color: v.$back-logo;
 }
+
 td {
     background-color: v.$blanco;
 }
