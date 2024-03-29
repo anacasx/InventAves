@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="build/css/app.css">
 </head>
 <body>
+<div class="imagen">
+        <!-- Aquí puedes agregar tu imagen -->
+        <img src="ruta/de/la/imagen.jpg" alt="Descripción de la imagen">
+    </div>
 <div class="menu">
         <a href="/agregar">Agregar</a>
         <a href="/costos">Costos</a>
