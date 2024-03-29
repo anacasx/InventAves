@@ -10,7 +10,7 @@
 <body>
 <div class="imagen">
         <!-- Aquí puedes agregar tu imagen -->
-        <img src="ruta/de/la/imagen.jpg" alt="Descripción de la imagen">
+        <img src="../src/img/Logo-Avi.png" alt="Descripción de la imagen">
     </div>
 <div class="menu">
         <a href="/agregar">Agregar</a>
