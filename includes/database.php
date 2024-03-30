@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '', 'granja24');
+$db = mysqli_connect('localhost', 'root', '', 'inventaves');
 
 
 if (!$db) {

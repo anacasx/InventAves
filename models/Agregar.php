@@ -5,10 +5,11 @@ namespace Model;
 class Agregar extends ActiveRecord{
     //nombre de la tabla
     protected static $tabla='existencias';
-    protected static $columnasDB=['semana','cantidad','costo'];
+    protected static $columnasDB=['fechaIngreso','semana','cantidad','costoInicial'];
 
     //variables por campo
     public $id;
+    public $fecha;
     public $semana;
     public $cantidad;
     public $costo;
@@ -16,20 +17,21 @@ class Agregar extends ActiveRecord{
     //constructor
     public function __construct($args=[])
     {
-        $this->id = $args['id'] ?? null;
+        $this->id = $args['id_existencias'] ?? null;
+        $this->fecha = $args['fechaIngreso'] ?? date('Y-m-d H:i:s');
         $this->semana = $args['semana'] ?? '1';
         $this->cantidad = $args['cantidad'] ?? '';
-        $this->costo = $args['costo'] ?? '';
+        $this->costo = $args['costoInicial'] ?? '';
     }
 
     // Mensajes de validación para la creación de una cuenta
-    public function agregarExistencia() {
+    public function validarNuevaCuenta() {
       
         if(!$this->costo) {
-            self::$alertas['error'][] = 'El Nombre es Obligatorio';
+            self::$alertas['error'][] = 'El costo es Obligatorio';
         }
         if(!$this->cantidad) {
-            self::$alertas['error'][] = 'El Apellido es Obligatorio';
+            self::$alertas['error'][] = 'La cantidad es Obligatoria';
         }
 
 

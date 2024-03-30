@@ -93,7 +93,7 @@ class LoginController
         $agregar = new Agregar;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $alertas = $agregar->agregarExistencia();
+            $alertas = $agregar->validarNuevaCuenta();
             $agregar->sincronizar($_POST);
 
             if (empty($alertas)) {
@@ -102,12 +102,9 @@ class LoginController
                 $resultado = $agregar->guardar();
 
 
-                if ($resultado) {
-                    //  debuguear($usuario);
-
-                    echo "Guardado correctamente";
-
-                    // header('Location: /mensaje');
+                if($resultado){
+                    echo "<script>alert('Registro ingresado correctamente');</script>";
+                    echo "<script>window.location.href = '/inicio';</script>";
                 }
             }
         }

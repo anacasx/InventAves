@@ -1,6 +1,6 @@
 <h1 class="nombre-pagina">Agregar</h1>
 
-<form class="formulario" method="POST" action="/inicio">
+<form class="formulario" method="POST" action="/agregar">
 <div class="campo">
     <label form="costo">Costo</label>
     <input type="number" id="costo" placeholder="$0" name="costo" value="<?php echo s($agregar->costo);?>">

@@ -21,7 +21,7 @@ class Costos extends ActiveRecord{
     //constructor
     public function __construct($args=[])
     {
-        $this->id = $args['id'] ?? null;
+        $this->id = $args['id_costos'] ?? null;
         $this->alimento = $args['alimento'] ?? '';
         $this->agua = $args['agua'] ?? '';
         $this->medicina = $args['medicina'] ?? '';

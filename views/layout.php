@@ -13,9 +13,9 @@
         <img src="../src/img/Logo-Avi.png" alt="Descripción de la imagen">
     </div>
 <div class="menu">
+        <a href="/inicio">Existencias</a>
         <a href="/agregar">Agregar</a>
         <a href="/costos">Costos</a>
-        <a href="/inicio">Existencias</a>
         <a href="/perdidas">Perdidas</a>
         <a href="/ventas">Ventas</a>
         <a href="/admin">Admin</a>

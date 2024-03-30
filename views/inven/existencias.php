@@ -10,7 +10,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "granja24";
+$dbname = "inventaves";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 }
 
 // Realizar la consulta
-$sql = "SELECT semana, cantidad, costo, precio FROM existencias";
+$sql = "SELECT semana, cantidad, costo_unitario, precio_unitario FROM existencias";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     echo "<table>";
     echo "<tr><th>Semana</th><th>Cantidad</th><th>Costo Unitario</th><th>Precio Unitario</th></tr>";
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["semana"]."</td><td>".$row["cantidad"]."</td><td>".$row["costo"]."</td><td>".$row["precio"]."</td></tr>";
+        echo "<tr><td>".$row["semana"]."</td><td>".$row["cantidad"]."</td><td>".$row["costo_unitario"]."</td><td>".$row["precio_unitario"]."</td></tr>";
     }
     echo "</table>";
 } else {
