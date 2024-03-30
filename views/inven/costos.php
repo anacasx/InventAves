@@ -48,8 +48,8 @@
 </div>
 
 <div class="campo">
-    <label form="margen">Margen de Ganancia</label>
-    <input type="number" id="margen" placeholder="$0" name="margen" value="<?php echo s($costos->margen);?>">
+    <label form="ganancias">Margen de Ganancia</label>
+    <input type="number" id="ganancias" placeholder="$0" name="ganancias" value="<?php echo s($costos->ganancias);?>">
 </div>
 
 <input type="submit" class="boton" value="Aceptar">
