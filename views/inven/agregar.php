@@ -2,8 +2,8 @@
 
 <form class="formulario" method="POST" action="/agregar">
 <div class="campo">
-    <label form="costo">Costo</label>
-    <input type="number" id="costo" placeholder="$0" name="costo" value="<?php echo s($agregar->costo);?>">
+    <label form="costo_inicial">Costo</label>
+    <input type="number" id="costo_inicial" placeholder="$0" name="costo_inicial" value="<?php echo s($agregar->costo_inicial);?>">
 </div>
 
 <div class="campo">

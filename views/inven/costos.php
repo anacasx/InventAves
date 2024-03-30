@@ -33,8 +33,18 @@
 </div>
 
 <div class="campo">
-    <label form="perdidas">Perdidas</label>
-    <input type="number" id="perdidas" placeholder="$0" name="perdidas" value="<?php echo s($costos->perdidas);?>">
+    <label for="perdidas">Perdidas</label>
+    <?php
+        // Verificar si $costos->perdidas es numérico
+        if (is_numeric($costos->perdidas)) {
+            // Formatear el valor adecuadamente si es numérico
+            $perdidas_placeholder = '$' . number_format((float)$costos->perdidas, 2);
+        } else {
+            // Utilizar un valor predeterminado si no es numérico
+            $perdidas_placeholder = '$0.00';
+        }
+    ?>
+    <input type="number" id="perdidas" placeholder="<?php echo $perdidas_placeholder; ?>" name="perdidas" value="<?php echo s($costos->perdidas); ?>" readonly>
 </div>
 
 <div class="campo">
