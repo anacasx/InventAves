@@ -70,7 +70,7 @@
      die("Conexión fallida: " . $conn->connect_error);
  }
 // Realizar la consulta a la base de datos
-$query = "SELECT precio_unitario FROM existencias WHERE semana = $semana";
+$query = "SELECT precio_unitario FROM existencias WHERE semana = 2";
 $resultado = mysqli_query($conn, $query);
 
 // Verificar si se obtuvo un resultado
