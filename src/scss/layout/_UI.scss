@@ -13,12 +13,14 @@
     top: 0;
     left: 0;
 
+    /* Opciones del menú centradas */
     a {
         display: block;
         color: #ffffff;
         text-decoration: none;
         padding: 30px 20px; /* Espaciado interno */
         transition: background-color 0.3s ease; /* Transición suave de color de fondo */
+        text-align: center; /* Centrar texto */
 
         &:hover {
             background-color: #C5371B; /* Color de fondo al pasar el ratón */
@@ -29,7 +31,7 @@
 .contenedor-app {
     @include m.tablet {
         min-height: 100vh;
-        width: calc(100% - 430px); /* Ajuste para dejar espacio al menú */
+        width: calc(100% - 410px); /* Ajuste para dejar espacio al menú */
         margin: 2rem auto;
         padding: 3rem;
         border-radius: 10px; /* Bordes redondeados */
