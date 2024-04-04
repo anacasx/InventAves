@@ -5,7 +5,8 @@
                     action="/ventas">
                     <div class="campo">
     <label for="semana">Semana</label>
-    <select name="semana">
+    <select name="semana" id="semanaSelect">
+        <option value="" selected disabled>Seleccione una semana</option>
         <?php
         // Conectarse a la base de datos
         $servername = "localhost";
@@ -21,7 +22,7 @@
         }
 
         // Consulta para obtener los datos de la tabla "existencias"
-        $query = "SELECT semana FROM existencias ORDER BY semana ASC";
+        $query = "SELECT semana, precio_unitario FROM existencias ORDER BY semana ASC";
         $result = $conn->query($query);
 
         // Verificar si la consulta devuelve algún resultado
@@ -29,10 +30,9 @@
             // Iterar sobre los resultados y generar los options
             while ($row = $result->fetch_assoc()) {
                 $semana = $row['semana'];
-                // Verificar si la semana actual coincide con la semana de la tabla "existencias"
-                $selected = ($ventas->semana == $semana) ? "selected" : "";
+                $precio_unitario = $row['precio_unitario'];
                 // Generar el option con el valor de la semana
-                echo "<option value='$semana' $selected>$semana</option>";
+                echo "<option value='$semana' data-precio='$precio_unitario'>$semana</option>";
             }
         } else {
             echo "<option value=''>No hay semanas disponibles</option>";
@@ -43,57 +43,41 @@
         ?>
     </select>
 </div>
+
+<div class="campo">
+    <label for="precio_unitario">Precio Unitario</label>
+    <input type="text" name="precio_unitario" id="precioUnitarioInput" readonly placeholder="Precio unitario">
+</div>
+
+<script>
+    // Obtener referencia al select y al input
+    var selectSemana = document.getElementById('semanaSelect');
+    var precioUnitarioInput = document.getElementById('precioUnitarioInput');
+
+    // Escuchar cambios en el select
+    selectSemana.addEventListener('change', function() {
+        // Obtener el precio unitario de la opción seleccionada
+        var selectedOption = selectSemana.options[selectSemana.selectedIndex];
+        var precioUnitario = selectedOption.getAttribute('data-precio');
+
+        // Actualizar el valor del input con el precio unitario
+        precioUnitarioInput.value = precioUnitario;
+    });
+</script>
+
 <div class="campo">
 <label for="cantidad">Cantidad</label>
 <input  type="text"
         id="cantidad"
         name="cantidad"
-        placeholder="cantidad"
+        placeholder="Cantidad de pollos"
         value="<?php echo s($ventas->cantidad); ?>"
 />
 </div>
-            
-
-<?php
-// Suponiendo que ya tienes una conexión a la base de datos establecida
-// y la variable $conexion representa esta conexión.
- // Conectarse a la base de datos
- $servername = "localhost";
- $username = "root";
- $password = "";
- $dbname = "inventaves";
-
- $conn = new mysqli($servername, $username, $password, $dbname);
-
- // Verificar la conexión
- if ($conn->connect_error) {
-     die("Conexión fallida: " . $conn->connect_error);
- }
-// Realizar la consulta a la base de datos
-$query = "SELECT precio_unitario FROM existencias WHERE semana = 2";
-$resultado = mysqli_query($conn, $query);
-
-// Verificar si se obtuvo un resultado
-if ($resultado) {
-    // Obtener el valor de precio_unitario si existe
-    $fila = mysqli_fetch_assoc($resultado);
-    $precio_unitario = $fila['precio_unitario'];
-} else {
-    // Si no se encuentra el valor, establecer un valor por defecto
-    $precio_unitario = "No encontrado";
-}
-?>
-
-<div class="campo">
-    <label for="precioU">Precio Unitario</label>
-    <!-- Mostrar el valor obtenido en el input -->
-    <input type="text" id="precioU" name="precioU" placeholder="precioU" value="<?php echo $precio_unitario; ?>" />
-</div>
-
 
 <div class="campo">
 <label for="total">Total</label>
-<input type="text" id="total" name="total" placeholder="total" readonly />
+<input type="text" id="total" name="total" placeholder="total" readonly value="<?php echo s($ventas->total); ?>" />
 </div>
 
 
@@ -108,14 +92,14 @@ if ($resultado) {
     // Función para calcular el total
     function calcularTotal() {
         var cantidad = document.getElementById('cantidad').value;
-        var precioU = document.getElementById('precioU').value;
-        var total = cantidad * precioU;
+        var precioUnitarioInput = document.getElementById('precioUnitarioInput').value;
+        var total = cantidad * precioUnitarioInput;
         document.getElementById('total').value = total;
     }
 
     // Llamar a la función cuando se cambie la cantidad o el precio unitario
     document.getElementById('cantidad').addEventListener('input', calcularTotal);
-    document.getElementById('precioU').addEventListener('input', calcularTotal);
+    document.getElementById('precioUnitarioInput').addEventListener('input', calcularTotal);
 
     // Calcular el total inicialmente
     calcularTotal();
