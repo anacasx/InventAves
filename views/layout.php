@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="build/css/app.css">
 </head>
 <body>
-<div class="imagen">
-        <!-- Aquí puedes agregar tu imagen -->
-        <img src="../src/img/Logo-Avi.png" alt="Descripción de la imagen">
-    </div>
+
 <div class="menu">
         <a href="/inicio">Existencias</a>
         <a href="/agregar">Agregar</a>
