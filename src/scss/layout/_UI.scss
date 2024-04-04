@@ -10,8 +10,10 @@
     overflow-y: auto; /* Desplazamiento vertical si el contenido excede el tamaño */
     color: #ffffff; /* Color del texto */
     position: fixed;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
+    z-index: 999; /* Asegura que el menú esté por encima de otros elementos */
 
     /* Opciones del menú centradas */
     a {
