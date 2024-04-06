@@ -7,6 +7,7 @@ use Model\Costos;
 use Model\Agregar;
 use MVC\Router;
 use Model\Ventas;
+use Model\Admin;
 
 
 class LoginController
@@ -143,6 +144,34 @@ class LoginController
         }
         $router->render('inven/agregar', [
             'agregar' => $agregar,
+            'alertas' => $alertas
+        ]);
+    }
+
+    public static function admin(Router $router)
+    {
+        // Alertas vacias
+        $alertas = [];
+        $admin = new Admin;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $alertas = $admin->validarNuevaCuenta();
+            $admin->sincronizar($_POST);
+
+            if (empty($alertas)) {
+                echo "alertas vacías";
+            } else {
+                $resultado = $admin->guardar();
+
+
+                if($resultado){
+                    echo "<script>alert('Usuario ingresado correctamente');</script>";
+                    echo "<script>window.location.href = '/inicio';</script>";
+                }
+            }
+        }
+        $router->render('inven/admin', [
+            'admin' => $admin,
             'alertas' => $alertas
         ]);
     }
