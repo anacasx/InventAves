@@ -31,6 +31,9 @@ $router-> post('/ventas', [LoginController::class,'ventas']);
 $router-> get('/costos', [LoginController::class,'costos']);
 $router-> post('/costos', [LoginController::class,'costos']);
 
+$router-> get('/admin', [LoginController::class,'admin']);
+$router-> post('/admin', [LoginController::class,'admin']);
+
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
