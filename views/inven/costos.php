@@ -18,8 +18,8 @@
 </div>
 
 <div class="campo">
-    <label form="mobra">Mano de Obra</label>
-    <input type="number" id="mobra" placeholder="$0" name="mobra" value="<?php echo s($costos->obra);?>">
+    <label form="m_obra">Mano de Obra</label>
+    <input type="number" id="m_obra" placeholder="$0" name="m_obra" value="<?php echo s($costos->m_obra);?>">
 </div>
 
 <div class="campo">

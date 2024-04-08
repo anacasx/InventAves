@@ -5,14 +5,14 @@ namespace Model;
 class Costos extends ActiveRecord{
     //nombre de la tabla
     protected static $tabla='costos';
-    protected static $columnasDB=['alimento','agua','medicina','obra','gas','aserrin','perdidas','ganancias'];
+    protected static $columnasDB=['alimento','agua','medicina','m_obra','gas','aserrin','perdidas','ganancias'];
 
     //variables por campo
     public $id;
     public $alimento;
     public $agua;
     public $medicina;
-    public $obra;
+    public $m_obra;
     public $gas;
     public $aserrin;
     public $perdidas;
@@ -25,7 +25,7 @@ class Costos extends ActiveRecord{
         $this->alimento = $args['alimento'] ?? '';
         $this->agua = $args['agua'] ?? '';
         $this->medicina = $args['medicina'] ?? '';
-        $this->obra = $args['obra'] ?? '';
+        $this->m_obra = $args['m_obra'] ?? '';
         $this->gas = $args['gas'] ?? '';
         $this->aserrin = $args['aserrin'] ?? '';
         $this->perdidas = $args['perdidas'] ?? '';
@@ -44,7 +44,7 @@ class Costos extends ActiveRecord{
         if(!$this->medicina) {
             self::$alertas['error'][] = 'El Email es Obligatorio';
         }
-        if(!$this->obra) {
+        if(!$this->m_obra) {
             self::$alertas['error'][] = 'El Password es Obligatorio';
         }
         if($this->gas)  {

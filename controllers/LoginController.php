@@ -81,7 +81,7 @@ class LoginController
 
                 $consultaCostos = "UPDATE existencias
                     SET costo_unitario = (
-                        (SELECT (SUM(alimento) + SUM(agua) + SUM(medicina) + SUM(obra) + SUM(gas) + SUM(aserrin) + SUM(perdidas)) / cantidad 
+                        (SELECT (SUM(alimento) + SUM(agua) + SUM(medicina) + SUM(m_obra) + SUM(gas) + SUM(aserrin) + SUM(perdidas)) / cantidad 
                          FROM costos) + costo_inicial
                     )";
                 $resultadoConsultaCostos = $conexion->query($consultaCostos);
